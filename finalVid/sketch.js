@@ -1,16 +1,22 @@
 var capture;
-var vidX = 150;
+var isCanvasHidden = 'hide'; 
 
-function setup() {
-  createCanvas(1000, 625);
+var startCamera = function(e) {
+  isCanvasHidden = ''
+  onboarding = document.querySelector('.onboarding')
+  onboarding.className = 'hide'; 
+}
+
+function setup() {  
+  myCanvas = createCanvas(300, 400); 
+  myCanvas.parent("container");
+  myCanvas.class(isCanvasHidden);
   capture = createCapture(VIDEO);
-  capture.size(700, 585);
-  capture.hide();
 }
 
 function draw() {
   background(255);
-  image(capture, vidX, 0, 700, 585);
-//  image(capture, vidX,0, 320, 480);
+  myCanvas.class(isCanvasHidden);
+  image(capture, 0, 0, 300, 240);
 
 }
