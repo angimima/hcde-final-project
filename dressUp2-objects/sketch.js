@@ -35,12 +35,20 @@ function setup() {
 function draw() {
   background(255);
   image(capture, vidX, 0, 700, 585);
+  filter(GRAY);// creates the filter
+  
 // for every object in the array draw the image and place it in its designated x and y spots
   for (i = 0; i < costumeObjectArray.length; i++) {
     image(costumeObjectArray[i].img, costumeObjectArray[i].x, costumeObjectArray[i].y);
   }
-
 }
+
+  // if (keyIsPressed === true) {
+  //   image(capture, vidX, 0, 700, 585);
+  //   filter(GRAY);
+  // } else {
+  //   filter(OPAQUE);
+  // }
 
 // make a generic function that sets the starting x and y coordinates for each image 
 function CostumeObject(xParam, yParam, imgFileNameParam) {
