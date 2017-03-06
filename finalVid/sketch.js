@@ -18,5 +18,4 @@ function draw() {
   background(255);
   myCanvas.class(isCanvasHidden);
   image(capture, 0, 0, 300, 240);
-
 }
