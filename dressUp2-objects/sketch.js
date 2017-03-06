@@ -4,7 +4,7 @@ images that the user can click on to drag and drop on the video feed. The user c
 reset the costume items back to their original starting point.
 Consulted Daniel Shiffman Coding Train videos on YouTube for how to create array of objects.
 Googled for how to use MousePressed/Released to move objects.
-last edited on 3/4/2017 at 10:58pm
+last edited on 3/5/2017 at 5:39pm
 */
 
 var capture; // variable for enabling the computer camera
