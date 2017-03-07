@@ -28,8 +28,8 @@ function preload() {
   costumeObjectArray[1] = new CostumeObject(780, 150, 150, 43, "assets/moustache.png");
   costumeObjectArray[2] = new CostumeObject(780, 400, 200, 139, "assets/beard.png");
   costumeObjectArray[3] = new CostumeObject(780, 10, 200, 100, "assets/glasses.png");
-  costumeObjectArray[4] = new CostumeObject(25, 5, 210, 167, "assets/hat.png");
-  costumeObjectArray[5] = new CostumeObject(5, 170, 325, 449, "assets/hair.png");
+  costumeObjectArray[4] = new CostumeObject(5, 170, 325, 449, "assets/hair.png");
+  costumeObjectArray[5] = new CostumeObject(25, 5, 210, 167, "assets/hat.png");  
   imgReset = loadImage("assets/buttonReset.png");
   imgSave = loadImage("assets/buttonSave.png");
   imgFilters = loadImage("assets/buttonFilters.png");  
@@ -139,7 +139,7 @@ function mouseReleased() {
   for (i = 0; i < costumeObjectArray.length; i++) { // loops through the objects
     costumeObjectArray[i].exitMoveState(); // if mouse is released it stops moving the items
   }
-  if (mouseX > 350 && mouseX < 500 && mouseY > 500 && mouseY < 700) { // determines if the user clicked the reset text
+  if (mouseX > 350 && mouseX < 420 && mouseY > 550 && mouseY < 620) { // determines if the user clicked the reset text
     for (i = 0; i < costumeObjectArray.length; i++) { // if mouse is pressed and released within text area it loops through all items
       costumeObjectArray[i].reset(); // and postions them back at their original x y coordinates
     }
