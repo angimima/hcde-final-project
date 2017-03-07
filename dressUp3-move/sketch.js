@@ -42,7 +42,7 @@ function setup() {
   capture = createCapture(VIDEO);
   capture.size(1000, 585);
 
-  canvas.mouseClicked(canvasPressed); // Add the mouse click event handler 
+ // canvas.mouseClicked(canvasPressed); // Add the mouse click event handler 
 }
 
 // function helps to download the canvas image 
@@ -51,12 +51,12 @@ function downloadImage() {
 }
 
 // funciton to change the filter when clicked on the canvas 
-function canvasPressed() {
-  if (mouseButton == LEFT) { // Change the filter only on the left button
-    ++imgFilter; // Goto the next filter 
-    imgFilter = imgFilter % filters.length; // make sure that the filter number is always between 0 and 4
-  }
-}
+// function canvasPressed() {
+//   if (mouseButton == LEFT) { // Change the filter only on the left button
+//     ++imgFilter; // Goto the next filter 
+//     imgFilter = imgFilter % filters.length; // make sure that the filter number is always between 0 and 4
+//   }
+// }
 
 function draw() {
   canvas.class(isCanvasHidden);
@@ -143,6 +143,9 @@ function mouseReleased() {
     for (i = 0; i < costumeObjectArray.length; i++) { // if mouse is pressed and released within text area it loops through all items
       costumeObjectArray[i].reset(); // and postions them back at their original x y coordinates
     }
+  } else if (mouseX > 550 && mouseX < 620 && mouseY > 550 && mouseY < 620) {
+    ++imgFilter; // Goto the next filter 
+    imgFilter = imgFilter % filters.length; // make sure that the filter number is always between 0 and 4
   }
 }
 
