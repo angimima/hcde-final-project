@@ -30,6 +30,9 @@ function preload() {
   costumeObjectArray[3] = new CostumeObject(780, 10, 200, 100, "assets/glasses.png");
   costumeObjectArray[4] = new CostumeObject(25, 5, 210, 167, "assets/hat.png");
   costumeObjectArray[5] = new CostumeObject(5, 170, 325, 449, "assets/hair.png");
+  imgReset = loadImage("assets/buttonReset.png");
+  imgSave = loadImage("assets/buttonSave.png");
+  imgFilters = loadImage("assets/buttonFilters.png");  
 }
 
 function setup() {
@@ -69,7 +72,9 @@ function draw() {
     costumeObjectArray[i].move(mouseX, mouseY); // tells costume object to move itself if it needs to 
     image(costumeObjectArray[i].img, costumeObjectArray[i].x, costumeObjectArray[i].y); // draw the costume object at the new coordinates
   }
-  button(); // reset function called
+  buttonReset(); // reset function called
+  buttonSave(); // save function called
+  buttonFilters(); // filters button called
 }
 
 // This is a costume object which represents an item that can be dragged over the video. It owns
@@ -141,9 +146,21 @@ function mouseReleased() {
   }
 }
 
-// Creates clickable text that says reset. The actual function to move objects is in CostumeObject function
-function button() {
-  fill(255); // color of text
-  textSize(40); // text size
-  text("Reset", 350, 600); // text and location
-}
+// Creates clickable button that says reset. The actual function to move objects is in CostumeObject function
+function buttonReset() {
+//  fill(255); // color of text
+//  textSize(40); // text size
+//  text("Reset", 350, 600); // text and location
+// load the reset button
+  image(imgReset, 350, 550);
+ }
+ 
+function buttonSave() {
+// load the save button
+  image(imgSave, 450, 550);
+ } 
+ 
+ function buttonFilters() {
+// load the save button
+  image(imgFilters, 550, 550);
+ } 
