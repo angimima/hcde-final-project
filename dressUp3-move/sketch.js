@@ -4,12 +4,22 @@ images that the user can click on to drag and drop on the video feed. The user c
 reset the costume items back to their original starting point.
 Consulted Daniel Shiffman Coding Train videos on YouTube for how to create array of objects.
 Googled for how to use MousePressed/Released to move objects.
-last edited on 3/5/2017 at 3:02pm
+last edited on 3/6/2017 at 3:02pm
 */
 
 var capture; // variable for enabling the computer camera
 var vidX = 150; // variable for placing the vidoe screen in the center of the screen
 var costumeObjectArray = []; // making an array for the costume images
+var isCanvasHidden = 'hide';  // hide the canvas initally 
+var imgFilter = 0; // the default filter is fist element from the set below 
+var filters = ['gray', 'invert', 'opaque', 'posterize', 'dilate'] // differnt available filters
+
+// Function to hide the onboarding and show canvas 
+var startCamera = function() {
+  isCanvasHidden = '' // remove the hide class 
+  onboarding = document.querySelector('.onboarding') // Get the onboarding screen 
+  onboarding.className = 'hide';  // Hide the onboarding screen 
+}
 
 // loading all the array images onto the sides of the video feed before the program so they are ready to use
 // loading smallest to largest
@@ -23,15 +33,33 @@ function preload() {
 }
 
 function setup() {
-  createCanvas(1000, 625); // create a large canvas 
-  capture = createCapture(VIDEO); // add video feed 
-  capture.size(700, 550); // that is smaller than the canvas size
-  capture.hide(); // not really sure what capture.hide does but it was in the book example code
+  canvas = createCanvas(1200, 625);
+  canvas.parent('container') // Add the canvas to the container 
+  canvas.class(isCanvasHidden); // by defualt the canvas is hidden 
+  capture = createCapture(VIDEO);
+  capture.size(1000, 585);
+
+  canvas.mouseClicked(canvasPressed); // Add the mouse click event handler 
+}
+
+// function helps to download the canvas image 
+function downloadImage() {
+  saveCanvas(canvas, 'canvas', 'jpg');
+}
+
+// funciton to change the filter when clicked on the canvas 
+function canvasPressed() {
+  if (mouseButton == LEFT) { // Change the filter only on the left button
+    ++imgFilter; // Goto the next filter 
+    imgFilter = imgFilter % filters.length; // make sure that the filter number is always between 0 and 4
+  }
 }
 
 function draw() {
+  canvas.class(isCanvasHidden);
   background(160); // gray background color
   image(capture, vidX, 0, 700, 550); // place the video screen in the center
+  filter(filters[imgFilter], 2);// creates the filter
   fill(160); // gray rectangle color
   noStroke(); // eliminate stroke from reset text
   rect(0, 0, 300, window.height); // rectangle block on side of video feed
