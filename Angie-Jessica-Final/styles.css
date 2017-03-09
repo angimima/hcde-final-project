@@ -1,0 +1,53 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  font-family: -apple-system, system-ui, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.container { 
+	width: 1000px; 
+  height: 650px; 
+  background: #f8f8f8;
+  border: solid 1px #ccc;
+  border-radius: 5px; 
+  margin: 50px auto;
+  display: block; 
+  overflow: hidden;
+}
+
+h1, h2, h3 {
+  text-align: center; 
+}
+
+
+p {
+ 	padding: 10px 20px; 
+  line-height: 1.4;
+  font-size: 13px;
+  text-align: center;
+}
+
+button {
+ height: 36px; 
+  width: 150px; 
+  margin: 0 auto; 
+  font-size: 14px; 
+  background: #512DA8; 
+  border: 0; 
+  color: #fff; 
+  display: block;
+  border-radius: 3px;
+}
+
+canvas {
+  border-radius: 5px;
+}
+
+.hide {
+ display: none;  
+}
+
+video {
+ display: none;  
+}
