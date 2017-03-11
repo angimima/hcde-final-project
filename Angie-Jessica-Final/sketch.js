@@ -44,8 +44,8 @@ function setup() {
 
 function draw() {
   canvas.class(isCanvasHidden);
-  background(255); // gray background color
-  image(capture, vidX, 100, 700, 550); // place the video screen in the center
+  background(0); // black background color for button area
+  image(capture, vidX, 50, 700, 550); // place the video screen in the center
   filter(filters[imgFilter], 2);// creates the filter
   image(imgStage, 0, 0);  // stage background image
   noStroke(); // eliminate stroke from reset text
