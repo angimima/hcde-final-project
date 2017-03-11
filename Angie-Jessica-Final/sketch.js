@@ -3,7 +3,7 @@ Program accesses the webcam on the user's computer and creates a display feed fr
 images that the user can click on to drag and drop on the video feed. The user can also cycle through various filter effects or 
 reset the costume items back to their original starting point by clicking on the bottom buttons.
 Daniel Shiffman Coding Train videos consulted.
-last edited on 3/8/2017 at 8:02pm
+last edited on 3/10/2017 at 4:50pm
 */
 
 var capture; // variable for enabling the computer camera
@@ -21,12 +21,12 @@ var startCamera = function() {
 
 // loading all the array images onto the sides of the video feed before the program so they are ready to use
 function preload() {
-  costumeObjectArray[0] = new CostumeObject(780, 300, 100, 70, "assets/lips.png");
-  costumeObjectArray[1] = new CostumeObject(780, 150, 150, 43, "assets/moustache.png");
-  costumeObjectArray[2] = new CostumeObject(780, 400, 200, 139, "assets/beard.png");
-  costumeObjectArray[3] = new CostumeObject(780, 10, 200, 100, "assets/glasses.png");
-  costumeObjectArray[4] = new CostumeObject(5, 170, 325, 449, "assets/hair.png");
-  costumeObjectArray[5] = new CostumeObject(25, 5, 210, 167, "assets/hat.png"); 
+  costumeObjectArray[0] = new costumeObject(780, 300, 100, 70, "assets/lips.png");
+  costumeObjectArray[1] = new costumeObject(780, 150, 150, 43, "assets/moustache.png");
+  costumeObjectArray[2] = new costumeObject(780, 400, 200, 139, "assets/beard.png");
+  costumeObjectArray[3] = new costumeObject(780, 10, 200, 100, "assets/glasses.png");
+  costumeObjectArray[4] = new costumeObject(5, 170, 325, 449, "assets/hair.png");
+  costumeObjectArray[5] = new costumeObject(25, 5, 210, 167, "assets/hat.png"); 
 // loading the buttons  
   imgReset = loadImage("assets/buttonReset.png");
   imgSave = loadImage("assets/buttonSave.png");
@@ -45,13 +45,10 @@ function setup() {
 function draw() {
   canvas.class(isCanvasHidden);
   background(255); // gray background color
-   
   image(capture, vidX, 100, 700, 550); // place the video screen in the center
   filter(filters[imgFilter], 2);// creates the filter
   image(imgStage, 0, 0);  // stage background image
   noStroke(); // eliminate stroke from reset text
-//  rect(0, 0, 300, window.height); // rectangle block on side of video feed
-//  rect(750, 0, 300, window.height); // rectangle block on side of video feed
   // for every object in the array draw the image and place it in its designated x and y spots
   for (i = 0; i < costumeObjectArray.length; i++) { // loops through each costume object
     costumeObjectArray[i].move(mouseX, mouseY); // tells costume object to move itself if it needs to 
@@ -65,7 +62,7 @@ function draw() {
 // This is a costume object which represents an item that can be dragged over the video. It owns
 // its position, right left, image and has methods for telling if the object should move, actually
 // moving the object and resetting the position.
-function CostumeObject(xParam, yParam, widthParam, heightParam, imgFileNameParam) { // constructor for a generic object that represents any object that can be used
+function costumeObject(xParam, yParam, widthParam, heightParam, imgFileNameParam) { // constructor for a generic object that represents any object that can be used
   this.xHome = xParam; // Starting x value for costume, this is also cached to be default if it is reset
   this.yHome = yParam; // Starting y value for costume, this is also cached to be default if it is reset
   this.x = xParam; // active x value
