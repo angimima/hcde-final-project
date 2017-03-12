@@ -2,8 +2,8 @@
 Program accesses the webcam on the user's computer and creates a display feed from it. It loads costume 
 images that the user can click on to drag and drop on the video feed. The user can also cycle through various filter effects or 
 reset the costume items back to their original starting point by clicking on the bottom buttons.
-Daniel Shiffman Coding Train videos consulted.
-last edited on 3/10/2017 at 4:50pm
+Daniel Shiffman Coding Train videos (specifically 6.3, 6.4, and 6.7) consulted.
+last edited on 3/11/2017 at 4:30pm
 */
 
 var capture; // variable for enabling the computer camera
@@ -47,7 +47,7 @@ function draw() {
   canvas.class(isCanvasHidden);
   background(0); // black background color for button area
   image(capture, vidX, 50, 700, 550); // place the video screen in the center
-  filter(filters[imgFilter], 2);// creates the filter
+  filter(filters[imgFilter], 2); // creates the filter
   image(imgStage, 0, 0);  // stage background image
   noStroke(); // eliminate stroke from reset text
   // for every object in the array draw the image and place it in its designated x and y spots
@@ -63,7 +63,8 @@ function draw() {
 // This is a costume object which represents an item that can be dragged over the video. It owns
 // its position, right left, image and has methods for telling if the object should move, actually
 // moving the object and resetting the position.
-function CostumeObject(xParam, yParam, widthParam, heightParam, imgFileNameParam) { // constructor for a generic object that represents any object that can be used
+// constructor for a generic object that represents any object that can be used
+function CostumeObject(xParam, yParam, widthParam, heightParam, imgFileNameParam) { 
   this.xHome = xParam; // Starting x value for costume, this is also cached to be default if it is reset
   this.yHome = yParam; // Starting y value for costume, this is also cached to be default if it is reset
   this.x = xParam; // active x value
@@ -81,31 +82,33 @@ function CostumeObject(xParam, yParam, widthParam, heightParam, imgFileNameParam
     this.x = this.xHome; // original value of x
     this.y = this.yHome; // original value of y
     this.right = this.x + this.width; // original right value
-    this.bottom = this.y + this.height // original bottom value
-   }
+    this.bottom = this.y + this.height; // original bottom value
+  }
    
-   // this is called every frame to see if object is currently being moved
+  // this is called every frame to see if object is currently being moved
   this.move = function(xParam, yParam) { 
-   if (this.moveState) { // if it is being moved
+    if (this.moveState) { // if it is being moved
      this.x = xParam; // set x value to new x value being passed in 
      this.y = yParam; // set y value to new y value being passed in
      this.right = this.x + this.width; // adjust right position accordingly
-     this.bottom = this.y + this.height // adjust bottom position accordingly
-   }  
+     this.bottom = this.y + this.height; // adjust bottom position accordingly
+    }  
   }
    
-//  Tests to see if the passed in coordinates are within the object. Sets an object variable so that the object
-//  knows it is being moved. This is used for telling if the user clicked within the boundaries of the image.
-   this.enterMoveState = function(xParam, yParam) {
+  //  Tests to see if the passed in coordinates are within the object. Sets an object variable so that the object
+  //  knows it is being moved. This is used for telling if the user clicked within the boundaries of the image.
+  this.enterMoveState = function(xParam, yParam) {
     if ((xParam > this.x) && (xParam < this.right) && (yParam > this.y) && (yParam < this.bottom)) { // do the coordiantes being passed in fall within boundaries of object
       this.moveState = true; // if it does then put object into move state
       return true; // return true if object is entering move state
     } 
     return false; // return false if object is not
-   }
-   this.exitMoveState = function() { // called when mouse is released
+  }
+  
+  // called when mouse is released
+  this.exitMoveState = function() { 
     this.moveState = false; // take object out of move state
-   }
+  }
 } // End of CostumeObject function
 
 // determines if mouse is pressed 
@@ -137,7 +140,7 @@ function mouseReleased() {
 // load the reset button
 function buttonReset() {
   image(imgReset, 350, 550);
- }
+}
 
 // load the save button
 function buttonSave() {
@@ -147,4 +150,4 @@ function buttonSave() {
 // load the filter button. 
  function buttonFilters() {
   image(imgFilters, 600, 550);
- } 
+} 
