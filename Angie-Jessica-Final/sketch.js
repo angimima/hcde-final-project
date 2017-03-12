@@ -20,13 +20,14 @@ var startCamera = function() {
 }
 
 // loading all the array images onto the sides of the video feed before the program so they are ready to use
+// constructor function is capitalized (Shiffman video 6.4)
 function preload() {
-  costumeObjectArray[0] = new costumeObject(780, 300, 100, 70, "assets/lips.png");
-  costumeObjectArray[1] = new costumeObject(780, 150, 150, 43, "assets/moustache.png");
-  costumeObjectArray[2] = new costumeObject(780, 400, 200, 139, "assets/beard.png");
-  costumeObjectArray[3] = new costumeObject(780, 10, 200, 100, "assets/glasses.png");
-  costumeObjectArray[4] = new costumeObject(5, 170, 325, 449, "assets/hair.png");
-  costumeObjectArray[5] = new costumeObject(25, 5, 210, 167, "assets/hat.png"); 
+  costumeObjectArray[0] = new CostumeObject(780, 300, 100, 70, "assets/lips.png");
+  costumeObjectArray[1] = new CostumeObject(780, 150, 150, 43, "assets/moustache.png");
+  costumeObjectArray[2] = new CostumeObject(780, 400, 200, 139, "assets/beard.png");
+  costumeObjectArray[3] = new CostumeObject(780, 10, 200, 100, "assets/glasses.png");
+  costumeObjectArray[4] = new CostumeObject(5, 170, 325, 449, "assets/hair.png");
+  costumeObjectArray[5] = new CostumeObject(25, 5, 210, 167, "assets/hat.png"); 
 // loading the buttons  
   imgReset = loadImage("assets/buttonReset.png");
   imgSave = loadImage("assets/buttonSave.png");
@@ -62,7 +63,7 @@ function draw() {
 // This is a costume object which represents an item that can be dragged over the video. It owns
 // its position, right left, image and has methods for telling if the object should move, actually
 // moving the object and resetting the position.
-function costumeObject(xParam, yParam, widthParam, heightParam, imgFileNameParam) { // constructor for a generic object that represents any object that can be used
+function CostumeObject(xParam, yParam, widthParam, heightParam, imgFileNameParam) { // constructor for a generic object that represents any object that can be used
   this.xHome = xParam; // Starting x value for costume, this is also cached to be default if it is reset
   this.yHome = yParam; // Starting y value for costume, this is also cached to be default if it is reset
   this.x = xParam; // active x value
